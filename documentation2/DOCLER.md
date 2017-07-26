@@ -1,5 +1,5 @@
 #Docler
-This file is for the poeple of Docler Holdings.
+This file is for the people of Docler Holdings.
 
 ##infomations
 Before i start, you need to know that i didn't find a lot of time to make this project.

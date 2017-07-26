@@ -40,4 +40,4 @@ If you want to run the test
 
 ## More documentation
 
-[Read more](documentation/README.md)
+[Read more](https://github.com/major66/tic-tac-toe-docler/tree/master/documentation)
