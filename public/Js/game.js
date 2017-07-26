@@ -206,6 +206,14 @@ $(
             }
         );
 
+        $('.restart').on( 'click',
+            function ()
+            {
+                resetBoard();
+            }
+        );
+
+
         $('.player-unit').on(
             'click',
             function ()

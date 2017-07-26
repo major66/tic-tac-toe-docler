@@ -32,6 +32,8 @@ If you have som advice regarding this project :
 * Mistake regarding Design Pattern
 * All that can be useful
 
+Just for you know, a lot of things regarding the front is not made by me because you said that the style of the web interface is irrelevant on your subject file.
+
 PLEASE LET ME KNOW :
 
     yohann.payrot@gmail.com
