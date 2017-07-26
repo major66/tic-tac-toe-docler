@@ -7,7 +7,7 @@ This project is using PHP7 and the slim framework version 3.
 If there is some errors it's maybe because you didn't specify PHP7 on your IDE.
 
 ##Structure
-[Read more structure](STRUCTURE.md)
+[Read more structure](https://github.com/major66/tic-tac-toe-docler/blob/master/documentation/Structure.md)
 
 ##Game
 [Read more Game Logic ](https://github.com/major66/tic-tac-toe-docler/blob/master/documentation/GAME.md)
