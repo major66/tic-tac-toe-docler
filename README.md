@@ -19,6 +19,12 @@ From the root of the project, you can run the tic tac toe game using this follow
 You can play now. Please copy and past the following command on your web brwoser
 
     localhost:9000
+
+## Installation Problems
+If you have any issues during your installation, or for run the project or anything else, please let me know
+
+    yohann.payrot@malinshopper.com
+
 ## Test
 
 If you want to run the test
