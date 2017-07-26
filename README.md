@@ -25,6 +25,13 @@ If you have any issues during your installation, or for run the project or anyth
 
     yohann.payrot@malinshopper.com
 
+some issues can be solved by running the following commands :
+
+    composer install
+    npm install
+
+if the problem is not solved, just send an email.
+
 ## Test
 
 If you want to run the test
