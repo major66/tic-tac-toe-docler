@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tic Tac Toe</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+        <link rel="stylesheet" href="Css/style.css"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="Js/game.js"></script>
+    </head>
+    <body>
+    <br/>
+        <div class="container-fluid">
+            <div class="panel panel-default">
+
+                {% include 'Layout/main-menu.html.twig' %}
+                {% if block('title') %}
+                    <br/>
+                    <h1>{% block title %}
+
+                        {% endblock %}</h1>
+                    <br/>
+                {% endif %}
+                <div class="panel-body">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+                {% if block('footer') %}
+                    <div class="panel-footer">
+                        {% block footer %}
+
+                        {% endblock %}
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </body>
+</html>

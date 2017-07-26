@@ -1,0 +1,63 @@
+<?php
+// DIC configuration
+
+use App\Services\Game\Helper\ChangePlayer;
+use App\Services\Game\Helper\GetMax;
+use App\Services\Game\Helper\GetMin;
+use App\Services\Game\Helper\IsGameOver;
+use App\Services\Game\Move\CountAllPossibleMoves;
+use App\Services\Game\Move\GetAllPossibleMoves;
+use App\Services\Game\Move\MakeMove;
+use App\Services\Model\GetGameResponse;
+
+$container = $app->getContainer();
+
+// view renderer
+$container['renderer'] = function ($container) {
+    $settings = $container->get('settings')['renderer'];
+    return new Slim\Views\PhpRenderer($settings['template_path']);
+};
+
+// monolog
+$container['logger'] = function ($container) {
+    $settings = $container->get('settings')['logger'];
+    $logger = new Monolog\Logger($settings['name']);
+    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
+    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+    return $logger;
+};
+
+// Register component on container
+$container['view'] = function ($container) {
+    $settings = $container->get('settings')['twig'];
+    $view = new \Slim\Views\Twig($settings['path'], [
+        'cache' => $settings['cache']
+    ]);
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container['router'],
+        $container['request']->getUri()
+    ));
+    
+    // Instantiate and add Slim specific extension
+    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+
+    return $view;
+};
+
+$container[IsGameOver::class] = new IsGameOver();
+
+$container['Game'] = function ($c) {
+    $isGameOver = $c->get(IsGameOver::class);
+    $getMin = new GetMin();
+    $getMax = new GetMax();
+    $changePlayer = new ChangePlayer();
+    $getAllPossibleMoves = new GetAllPossibleMoves();
+    $makeAmove = new MakeMove($isGameOver, $getMax, $getMin, $changePlayer, $getAllPossibleMoves);
+    $changePlayer = new ChangePlayer();
+    $getGameResponse = new GetGameResponse($isGameOver, $changePlayer);
+    $counAllPossibleMoves = new CountAllPossibleMoves($getAllPossibleMoves);
+    $logger = $c->get('logger');
+    $validator = new \App\Services\Game\Validator\BoardValidator($logger);
+    return new App\Services\Game\Game($validator,$makeAmove, $getGameResponse, $counAllPossibleMoves);
+};

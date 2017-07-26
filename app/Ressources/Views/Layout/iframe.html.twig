@@ -1,0 +1,9 @@
+{% extends 'base/base.html.twig' %}
+{% block content %}
+    <script>
+        function resizeFrame(obj) {
+            obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        }
+    </script>
+    <iframe style=" width: 100%;" src="{{ url }}" frameborder="0" scrolling="no" onload="resizeFrame(this)"/>
+{% endblock %}

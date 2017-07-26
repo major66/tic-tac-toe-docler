@@ -1,0 +1,68 @@
+body {
+    background-color: #EAEAEA !important;
+}
+
+.status-message {
+    display: none;
+    font-size: 20px !important;
+}
+
+.tic-tac-toe-table {
+    width: 100%;
+    height: 300px !important;
+    font-size: 60px;
+    margin: 0px auto;
+}
+
+.tic-tac-toe-table thead,
+.tic-tac-toe-table tbody,
+.tic-tac-toe-table tr,
+.tic-tac-toe-table td,
+.tic-tac-toe-table th {
+    padding: 0px;
+    margin: 0px;
+}
+
+.tic-tac-toe-table tr {
+    border-bottom: 5px solid #00A5E3;
+}
+
+.tic-tac-toe-table tr:last-child {
+    border: none;
+}
+
+.tic-tac-toe-table td {
+    vertical-align: middle;
+    text-align: center;
+    border-right: 5px solid #00A5E3;
+}
+
+.tic-tac-toe-table td:last-child {
+    border: none;
+}
+
+.tic-tac-toe-table tbody tr .position {
+    cursor: pointer;
+    width: 33.33%;
+    height: 33.33%;
+}
+
+.winner-game
+{
+    font-weight: bold !important;
+    background: #ffff99 !important;
+    animation: blinker 1s linear infinite;
+}
+
+.tied-game {
+    background: #ebccd1 !important;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.player-unit {
+    width: 100% !important;
+    font-size: 50px;
+}
