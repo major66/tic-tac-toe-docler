@@ -15,6 +15,10 @@ From the root of the project, you can run the tic tac toe game using this follow
 
     php -S localhost:9000 -t public
 
+##Play
+You can play now. Please copy and past the following command on your web brwoser
+
+    localhost:9000
 ## Test
 
 If you want to run the test
@@ -23,4 +27,4 @@ If you want to run the test
 
 ## More documentation
 
-[Read more](Documentation/README.md)
+[Read more](documentation/README.md)
