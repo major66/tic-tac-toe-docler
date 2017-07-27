@@ -8,6 +8,11 @@ Run this command from the directory in which you want to install your new Tic Ta
 when the download is finish you have to go in projet :
 
     cd tic-tac-toe-docler
+
+Run :
+
+     composer install --no-dev
+
 ## How to run
 I assume that you have already PHP installed on your computer.
 
@@ -25,17 +30,13 @@ If you have any issues during your installation, or for run the project or anyth
 
     yohann.payrot@malinshopper.com
 
-some issues can be solved by running the following commands :
-
-    composer install
-    npm install
-
 if the problem is not solved, just send an email.
 
 ## Test
 
 If you want to run the test
 
+    composer install --dev
     phpunit
 
 ## More documentation
