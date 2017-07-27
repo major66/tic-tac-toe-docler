@@ -69,7 +69,7 @@ class MakeMove implements MoveInterface {
      */
     public function makeMove(
         array $boardState,
-        string $playerUnit = 'X'
+        string $playerUnit = "X"
     ) : array {
 
         $allPossibleMoves =
