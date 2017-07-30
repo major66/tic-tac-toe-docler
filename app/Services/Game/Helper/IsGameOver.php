@@ -22,7 +22,7 @@ class IsGameOver {
         for ($i = 0; $i < $gameBoardCount; $i++) {
             if ($board[$i][0] !== '' &&
                 ($board[$i][0] === $board[$i][1] &&
-                    $board[$i][0] == $board[$i][2])) {
+                    $board[$i][0] === $board[$i][2])) {
                 return $board[$i][0];
             }
         }
@@ -31,8 +31,8 @@ class IsGameOver {
         //FULL COLUMN
         for ($i = 0; $i < $gameBoardCount; $i++) {
             if ($board[0][$i]!= '' &&
-                ($board[0][$i] == $board[1][$i] &&
-                    $board[0][$i] == $board[2][$i])) {
+                ($board[0][$i] === $board[1][$i] &&
+                    $board[0][$i] === $board[2][$i])) {
                 return $board[0][$i];
             }
         }
@@ -44,7 +44,7 @@ class IsGameOver {
             return $board[0][0];
         }
 
-        //diagolnal bottom left to right
+        //diagonal bottom left to right
         if ($board[2][0]!== '' &&
             ($board[2][0] === $board[1][1] &&
                 $board[2][0] === $board[0][2])) {
@@ -53,7 +53,7 @@ class IsGameOver {
 
         for ($iterator = 0; $iterator < count($board); $iterator++) {
             for ($subIterator = 0; $subIterator < count($board[$iterator]); $subIterator++) {
-                if($board[$iterator][$subIterator] === '') {
+                if ($board[$iterator][$subIterator] === '') {
                     return false;
                 }
             }

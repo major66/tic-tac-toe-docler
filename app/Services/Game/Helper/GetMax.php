@@ -15,7 +15,7 @@ class GetMax {
         $numbers = array_column($values, 'cost');
         $max = max($numbers);
         for ($iterator = 0; $iterator < count($values); $iterator++) {
-            if($values[$iterator]['cost'] === $max) {
+            if ($values[$iterator]['cost'] === $max) {
                 return [
                     'cost' => $values[$iterator]['cost'],
                     'depth' => $values[$iterator]['depth'],

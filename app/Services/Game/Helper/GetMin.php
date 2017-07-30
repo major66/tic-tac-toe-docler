@@ -15,7 +15,7 @@ class GetMin {
         $numbers = array_column($values, 'cost');
         $min = min($numbers);
         for ($iterator = 0; $iterator < count($values); $iterator++) {
-            if($values[$iterator]['cost'] == $min) {
+            if ($values[$iterator]['cost'] == $min) {
                 return [
                     'cost' => $values[$iterator]['cost'],
                     'depth' => $values[$iterator]['depth'],
