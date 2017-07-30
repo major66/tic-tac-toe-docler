@@ -103,6 +103,7 @@ class MakeMove implements MoveInterface {
      */
     private function minMax($grid, $depth, $player) {
         $isGameOver = $this->isGameOver->isGameOver($grid);
+        $cost = null;
         if ($isGameOver === false) {
             $values = [];
             for ($iterator = 0; $iterator < 3; $iterator++) {
@@ -136,12 +137,13 @@ class MakeMove implements MoveInterface {
                 }
             }
         } elseif ($isGameOver == null) {
-            return 0;
+            $cost = 0;
         } elseif ($isGameOver === $this->playerToken) {
-            return $depth - 10;
+            $cost = $depth - 10;
         } elseif ($isGameOver === $this->computerToken) {
-            return 10 - $depth;
+            $cost = 10 - $depth;
         }
+        return $cost;
     }
 
     /**
@@ -154,7 +156,6 @@ class MakeMove implements MoveInterface {
         $this->computerToken = $value;
         if ($this->computerToken === 'X') {
             $this->setPlayerToken('O');
-            return;
         }
         $this->setPlayerToken('X');
     }
