@@ -12,11 +12,11 @@ use App\Services\Model\GetGameResponse;
 
 $container = $app->getContainer();
 
-// view renderer
+/*// view renderer
 $container['renderer'] = function ($container) {
     $settings = $container->get('settings')['renderer'];
     return new Slim\Views\PhpRenderer($settings['template_path']);
-};
+};*/
 
 // monolog
 $container['logger'] = function ($container) {
@@ -40,7 +40,7 @@ $container['view'] = function ($container) {
     
     // Instantiate and add Slim specific extension
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
-    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+    //$view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
     return $view;
 };
