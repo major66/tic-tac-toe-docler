@@ -14,7 +14,7 @@ Run :
      composer install --no-dev
 
 ## How to run
-I assume that you have already PHP installed on your computer.
+I assume that you have already **PHP7** installed on your computer.
 
 From the root of the project, you can run the tic tac toe game using this following command:
 
@@ -26,7 +26,7 @@ You can play now. Please copy and past the following command on your web brwoser
     localhost:9000
 
 ## Installation Problems
-If you have any issues during your installation, or for run the project or anything else, please let me know
+If you have any issues during your installation or for run the project or anything else, please let me know
 
     yohann.payrot@malinshopper.com
 
