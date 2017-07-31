@@ -26,6 +26,13 @@ You can play now. Please copy and past the following command on your web brwoser
     localhost:9000
 
 ## Installation Problems
+
+Please verify with the following command that you are running this project with PHP7
+
+    php -v
+
+If the version is anterior, you need to install php7.
+
 If you have any issues during your installation or for run the project or anything else, please let me know
 
     yohann.payrot@malinshopper.com
