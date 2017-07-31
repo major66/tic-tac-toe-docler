@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Game\Helper;
+namespace App\Services\Game\MinMax;
 
 class GetMin {
     
