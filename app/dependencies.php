@@ -13,18 +13,14 @@ use App\Services\Model\GetGameResponse;
 
 $container = $app->getContainer();
 
-/*// view renderer
-$container['renderer'] = function ($container) {
-    $settings = $container->get('settings')['renderer'];
-    return new Slim\Views\PhpRenderer($settings['template_path']);
-};*/
-
 // monolog
 $container['logger'] = function ($container) {
     $settings = $container->get('settings')['logger'];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+    $logger->pushHandler(
+        new Monolog\Handler\StreamHandler($settings['path'],$settings['level'])
+    );
     return $logger;
 };
 
@@ -38,11 +34,6 @@ $container['view'] = function ($container) {
         $container['router'],
         $container['request']->getUri()
     ));
-    
-    // Instantiate and add Slim specific extension
-    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
-    //$view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
-
     return $view;
 };
 
@@ -61,5 +52,11 @@ $container['Game'] = function ($c) {
     $counAllPossibleMoves = new CountAllPossibleMoves($getAllPossibleMoves);
     $logger = $c->get('logger');
     $validator = new \App\Services\Game\Validator\BoardValidator($logger);
-    return new App\Services\Game\Game($validator,$makeAmove, $getGameResponse, $counAllPossibleMoves);
+    
+    return new App\Services\Game\Game(
+        $validator,
+        $makeAmove,
+        $getGameResponse,
+        $counAllPossibleMoves
+    );
 };
