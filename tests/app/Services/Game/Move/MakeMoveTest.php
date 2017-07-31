@@ -3,9 +3,10 @@
 namespace Test\App\Services\Game\Move;
 
 use App\Services\Game\Helper\ChangePlayer;
-use App\Services\Game\Helper\GetMax;
-use App\Services\Game\Helper\GetMin;
+use App\Services\Game\MinMax\GetMax;
+use App\Services\Game\MinMax\GetMin;
 use App\Services\Game\Helper\IsGameOver;
+use App\Services\Game\MinMax\MinMax;
 use App\Services\Game\Move\GetAllPossibleMoves;
 use App\Services\Game\Move\MakeMove;
 use PHPUnit\Framework\TestCase;
@@ -14,30 +15,20 @@ class MakeMoveTest extends TestCase {
 
     public function testMakeMove() {
         $boards = $this->getMakeMoveDataProvider();
-        //$boardone = $this->getMakeMove()
-        //->makeMove($boards[0]['boardState'], $boards[0]['playerUnit']);
-        /*
-        $boardTwo = $this->getMakeMove()
-            ->makeMove($boards[1]['boardState'], $boards[1]['playerUnit']);
-        $boardThree = $this->getMakeMove()
-            ->makeMove($boards[2]['boardState'], $boards[2]['playerUnit']);*/
+        // Something went wrong.
+        // problem was a conflict between my phpversion and the phpunit version
+        // I will solve this problem soon and update this file.
     }
 
     /**
      * @return MakeMove
      */
     private function getMakeMove() {
-        $isGameOver = $this->getIsGameOver();
-        $getMax = $this->getGetMax();
-        $getMin = $this->getGetMin();
-        $changePlayer = $this->getChangePlayer();
         $getAllPossibleMoves = $this->getGetAllPossibleMoves();
+        $getMinMax = $this->getMinMax();
         $class = new MakeMove(
-            $isGameOver,
-            $getMax,
-            $getMin,
-            $changePlayer,
-            $getAllPossibleMoves
+            $getAllPossibleMoves,
+            $getMinMax
         );
         return $class;
     }
@@ -62,6 +53,19 @@ class MakeMoveTest extends TestCase {
             ]
         ];
         return $boards;
+    }
+
+    /**
+     * @return MinMax
+     */
+    private function getMinMax() {
+        $class = new MinMax(
+            $this->getIsGameOver(),
+            $this->getGetMin(),
+            $this->getGetMax(),
+            $this->getChangePlayer()
+        );
+        return $class;
     }
 
     /**

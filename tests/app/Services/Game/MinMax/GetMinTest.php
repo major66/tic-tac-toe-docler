@@ -2,7 +2,7 @@
 
 namespace Test\App\Services\Game\Helper;
 
-use App\Services\Game\Helper\GetMin;
+use App\Services\Game\MinMax\GetMin;
 use PHPUnit\Framework\TestCase;
 
 class GetMinTest extends TestCase{
