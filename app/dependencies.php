@@ -2,9 +2,10 @@
 // DIC configuration
 
 use App\Services\Game\Helper\ChangePlayer;
-use App\Services\Game\Helper\GetMax;
-use App\Services\Game\Helper\GetMin;
+use App\Services\Game\MinMax\GetMax;
+use App\Services\Game\MinMax\GetMin;
 use App\Services\Game\Helper\IsGameOver;
+use App\Services\Game\MinMax\MinMax;
 use App\Services\Game\Move\CountAllPossibleMoves;
 use App\Services\Game\Move\GetAllPossibleMoves;
 use App\Services\Game\Move\MakeMove;
@@ -53,7 +54,8 @@ $container['Game'] = function ($c) {
     $getMax = new GetMax();
     $changePlayer = new ChangePlayer();
     $getAllPossibleMoves = new GetAllPossibleMoves();
-    $makeAmove = new MakeMove($isGameOver, $getMax, $getMin, $changePlayer, $getAllPossibleMoves);
+    $minMax = new MinMax($isGameOver, $getMin, $getMax, $changePlayer);
+    $makeAmove = new MakeMove($getAllPossibleMoves, $minMax);
     $changePlayer = new ChangePlayer();
     $getGameResponse = new GetGameResponse($isGameOver, $changePlayer);
     $counAllPossibleMoves = new CountAllPossibleMoves($getAllPossibleMoves);
