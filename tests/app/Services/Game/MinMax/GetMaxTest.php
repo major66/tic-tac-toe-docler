@@ -2,7 +2,7 @@
 
 namespace Test\App\Services\Game\Helper;
 
-use App\Services\Game\Helper\GetMax;
+use App\Services\Game\MinMax\GetMax;
 use PHPUnit\Framework\TestCase;
 
 class GetMaxTest extends TestCase {

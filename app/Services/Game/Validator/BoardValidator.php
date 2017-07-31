@@ -32,9 +32,6 @@ class BoardValidator {
     private function lineVerification($board) :void {
         if(count($board) !== 3) {
             $this->writeLog('Invalid number of lines, 3 lines expected');
-           // throw new BoardException(
-            //'Invalid number of lines, 3 lines expected'
-            //);
         }
     }
 
@@ -42,9 +39,6 @@ class BoardValidator {
         for ($iterator = 0;$iterator < count($board); $iterator++) {
             if(count($board[$iterator]) !== 3) {
                 $this->writeLog('Invalid number of columns, 3 columns expected');
-                //throw new BoardException(
-                //'Invalid number of columns, 3 columns expected'
-                //);
             }
             $this->isPlayerOrBot($board[$iterator]);
         }
@@ -53,9 +47,6 @@ class BoardValidator {
     private function isPlayerOrBot($boardLine) :void {
         if (!in_array($boardLine, ['X', 'O', ''])) {
             $this->writeLog('Invalid content, expexted X, O or empty string');
-           // throw new BoardException(
-            //'Invalid content, expexted X, O or empty string'
-            //);
         }
     }
 

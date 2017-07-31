@@ -1,39 +1,37 @@
 <?php
 
-namespace Test\App\Services\Game\Move;
+namespace Test\App\Services\Game\Helper;
 
 use App\Services\Game\Helper\ChangePlayer;
+use App\Services\Game\Helper\IsGameOver;
 use App\Services\Game\MinMax\GetMax;
 use App\Services\Game\MinMax\GetMin;
-use App\Services\Game\Helper\IsGameOver;
 use App\Services\Game\MinMax\MinMax;
-use App\Services\Game\Move\GetAllPossibleMoves;
-use App\Services\Game\Move\MakeMove;
 use PHPUnit\Framework\TestCase;
 
-class MakeMoveTest extends TestCase {
+class MinMaxTest extends TestCase {
 
-    public function testMakeMove() {
-        $boards = $this->getMakeMoveDataProvider();
-        // Something went wrong.
-        // problem was a conflict between my phpversion and the phpunit version
-        // I will solve this problem soon and update this file.
+    public function testMinMax() {
+        $boards = $this->getMinMaxDataProvider();
+        $bestMoveFirstCase = $this->getMinMax()->determineBestMove(
+            $boards[0]['boardState'],
+            $boards[0]['playerUnit']
+        );
+        $bestMoveSecondCase = $this->getMinMax()->determineBestMove(
+            $boards[1]['boardState'],
+            $boards[1]['playerUnit']
+        );
+        $this->assertEquals(0, $bestMoveFirstCase['cells'][0]);
+        $this->assertEquals(0, $bestMoveFirstCase['cells'][1]);
+        $this->assertEquals(0, $bestMoveSecondCase['cells'][0]);
+        $this->assertEquals(1, $bestMoveSecondCase['cells'][1]);
+
     }
 
     /**
-     * @return MakeMove
+     * @return array
      */
-    private function getMakeMove() {
-        $getAllPossibleMoves = $this->getGetAllPossibleMoves();
-        $getMinMax = $this->getMinMax();
-        $class = new MakeMove(
-            $getAllPossibleMoves,
-            $getMinMax
-        );
-        return $class;
-    }
-
-    private function getMakeMoveDataProvider() {
+    private function getMinMaxDataProvider() {
         $boards[] = [
             "playerUnit" => "X",
             "botUnit" => 'X',
@@ -97,14 +95,6 @@ class MakeMoveTest extends TestCase {
      */
     private function getChangePlayer() {
         $class = new ChangePlayer();
-        return $class;
-    }
-
-    /**
-     * @return GetAllPossibleMoves
-     */
-    private function getGetAllPossibleMoves() {
-        $class = new GetAllPossibleMoves();
         return $class;
     }
 }

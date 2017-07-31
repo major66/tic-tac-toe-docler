@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Services\Game\Helper;
+namespace App\Services\Game\MinMax;
 
-class GetMax {
+class GetMin {
     
     /**
-     * Allow me to determine the element with the max cost.
+     * Allow me to determine the element with the min cost.
      * Take an array ['cost' => $int, 'depth' => $int, 'cells' => [[$x] [$y]]]
      *
      * @param $values
      * @return array
      */
-    public function getMax($values) {
+    public function getMin($values) {
         $numbers = array_column($values, 'cost');
-        $max = max($numbers);
+        $min = min($numbers);
         for ($iterator = 0; $iterator < count($values); $iterator++) {
-            if ($values[$iterator]['cost'] === $max) {
+            if ($values[$iterator]['cost'] == $min) {
                 return [
                     'cost' => $values[$iterator]['cost'],
                     'depth' => $values[$iterator]['depth'],
