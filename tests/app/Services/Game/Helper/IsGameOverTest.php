@@ -20,7 +20,7 @@ class IsGameOverTest extends TestCase{
             ->isGameOver($allTypeOfBoards['diagonalLeft']);
         $diagonalRight = $this->getIsGameOverTest()
             ->isGameOver($allTypeOfBoards['diagonalRight']);
-        
+
         $this->assertEquals(null, $tie);
         $this->assertEquals(false, $notFinishYet);
         $this->assertEquals('O', $column);
