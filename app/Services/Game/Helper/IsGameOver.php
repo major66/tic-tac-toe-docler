@@ -37,14 +37,14 @@ class IsGameOver {
             }
         }
 
-        //DIAGONAL
+        //DIAGONAL TOP LEFT
         if ($board[0][0] !== '' &&
             ($board[0][0] === $board[1][1] &&
                 $board[0][0] === $board[2][2])) {
             return $board[0][0];
         }
 
-        //diagonal bottom left to right
+        //DIAGONAL BOTTOM LEFT
         if ($board[2][0]!== '' &&
             ($board[2][0] === $board[1][1] &&
                 $board[2][0] === $board[0][2])) {
@@ -52,7 +52,11 @@ class IsGameOver {
         }
 
         for ($iterator = 0; $iterator < count($board); $iterator++) {
-            for ($subIterator = 0; $subIterator < count($board[$iterator]); $subIterator++) {
+            for (
+                $subIterator = 0;
+                $subIterator < count($board[$iterator]);
+                $subIterator++
+            ) {
                 if ($board[$iterator][$subIterator] === '') {
                     return false;
                 }

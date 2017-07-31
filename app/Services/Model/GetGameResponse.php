@@ -31,7 +31,8 @@ class GetGameResponse
     public function getGameResponse($board, $gameInformations) {
         $gameResponse = new GameResponse();
         if ($this->isSpecialCase($gameInformations)) {
-            return $this->getSpecialCaseResponse($gameResponse, $gameInformations);
+            return
+                $this->getSpecialCaseResponse($gameResponse, $gameInformations);
         }
         $newBoard = $this->getBoardWithNextMove(
             $board,
@@ -39,6 +40,7 @@ class GetGameResponse
             $gameInformations['player']
             );
         $isGameOver = $this->isGameOver->isGameOver($newBoard);
+
         $gameResponse->tiedGame = $this->isTieGame($isGameOver);
         $gameResponse->winner = $this->isWinner($isGameOver);
         $gameResponse->playerWins = $this->isPlayerWin(
@@ -108,7 +110,6 @@ class GetGameResponse
     }
 
     private function getSpecialCaseResponse($gameResponse, $gameInformations) {
-        $isGameOver = false;
         $gameResponse->tiedGame = false;
         $gameResponse->winner = null;
         $gameResponse->playerWins = false;
